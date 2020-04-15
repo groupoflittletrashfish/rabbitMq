@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: publisher
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    #开启发送确认
+    publisher-confirms: true
+    #开启发送失败退回
+    publisher-returns: true
+    #全局开启ACK，manual为手动
+    listener:
+      simple:
+        acknowledge-mode: manual
+server:
+  port: 8083
