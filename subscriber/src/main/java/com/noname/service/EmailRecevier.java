@@ -1,7 +1,11 @@
 package com.noname.service;
 
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 /**
  * Created by Administrator on 2020/4/14.
@@ -17,7 +21,7 @@ public class EmailRecevier {
      * @param msg
      */
     @RabbitListener(queues = "emailQueue")
-    public void receiver(String msg) {
+    public void receiver(String msg, Channel channel, Message message) throws IOException {
         System.out.println("收到的消息为:" + msg);
     }
 }
